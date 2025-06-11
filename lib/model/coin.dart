@@ -6,6 +6,8 @@ class Coin {
   final double high24h;
   final double low24h;
   final double ath;
+  final double priceChangePercentage24h;
+  final double athChangePercentage;
 
   Coin({
     required this.id,
@@ -15,6 +17,8 @@ class Coin {
     required this.high24h,
     required this.low24h,
     required this.ath,
+    required this.priceChangePercentage24h,
+    required this.athChangePercentage,
   });
 
   factory Coin.fromJson(Map<String, dynamic> json) {
@@ -26,6 +30,8 @@ class Coin {
       high24h: (json['high_24h'] as num).toDouble(),
       low24h: (json['low_24h'] as num).toDouble(),
       ath: (json['ath'] as num).toDouble(),
+      priceChangePercentage24h: (json['price_change_percentage_24h'] as num).toDouble(),
+      athChangePercentage: (json['ath_change_percentage'] as num).toDouble(),
     );
   }
 }

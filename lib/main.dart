@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'pages/coin_list_page.dart';
-import 'providers/theme_provider.dart'; // <-- Import this
+import 'providers/theme_provider.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
