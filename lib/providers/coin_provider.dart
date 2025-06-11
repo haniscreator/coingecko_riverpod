@@ -16,7 +16,7 @@ class CoinListNotifier extends StateNotifier<AsyncValue<List<Coin>>> {
 
   final CoinRepository _repository;
   int _currentPage = 1;
-  final int _limit = 5;
+  final int _limit = 6;
   bool _isFetching = false;
 
   List<Coin> _coins = [];
