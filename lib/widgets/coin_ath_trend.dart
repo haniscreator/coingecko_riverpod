@@ -42,7 +42,9 @@ class CoinAthTrend extends StatelessWidget {
             ),
             const SizedBox(width: 4),
             Text(
-              '${coin.priceChangePercentage24h.toStringAsFixed(2)}%',
+              //'${coin.priceChangePercentage24h.toStringAsFixed(2)}%',
+              '${coin.priceChangePercentage24h >= 0 ? '+' : ''}${coin.priceChangePercentage24h.toStringAsFixed(2)}%',
+  
               style: TextStyle(
                 color: isPriceUp ? Colors.green : Colors.red,
                 fontSize: 13,

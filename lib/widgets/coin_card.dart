@@ -45,7 +45,7 @@ class CoinCard extends StatelessWidget {
           top: 0,
           child : TweenAnimationBuilder<double>(
             tween: Tween(begin: 0, end: 1),
-            duration: const Duration(seconds: 2),
+            duration: const Duration(seconds: 5),
             curve: Curves.easeInOut,
             builder: (context, value, child) {
               return Container(
@@ -56,14 +56,14 @@ class CoinCard extends StatelessWidget {
                   boxShadow: [
                     // Subtle drop shadow
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Color(0x1A000000),
                       blurRadius: 4,
                       offset: const Offset(0, 2),
                     ),
 
                     // 🔥 Animated orange glow
                     BoxShadow(
-                      color: Colors.orange.withOpacity(0.6),
+                      color: Color(0x99FF9800),
                       blurRadius: 5 + (value * 5), // range: 20 → 30
                       spreadRadius: 1 + (value * 2), // range: 1 → 3
                     ),

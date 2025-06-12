@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     // Navigate to CoinListPage after 5 seconds
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const CoinListPage()),
       );
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white, // or dark if you prefer
       body: Center(
-        child: Lottie.asset('assets/lotties/splash.json', width: 200),
+        child: Lottie.asset('assets/lotties/splash.json', width: 250),
       ),
     );
   }
