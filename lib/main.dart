@@ -1,7 +1,8 @@
+import 'package:crypto_riverpod/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'pages/coin_list_page.dart';
 import 'providers/theme_provider.dart';
+
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -15,6 +16,7 @@ class MyApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Crypto App',
       theme: ThemeData(
         brightness: Brightness.light,
@@ -26,8 +28,8 @@ class MyApp extends ConsumerWidget {
         primarySwatch: Colors.indigo,
         scaffoldBackgroundColor: Colors.black,
       ),
-      themeMode: themeMode, // uses value from provider
-      home: const CoinListPage(),
+      themeMode: themeMode,
+      home: const SplashScreen(), // ⬅️ Start with SplashScreen
     );
   }
 }

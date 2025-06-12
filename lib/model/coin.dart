@@ -8,6 +8,7 @@ class Coin {
   final double ath;
   final double priceChangePercentage24h;
   final double athChangePercentage;
+  
 
   Coin({
     required this.id,

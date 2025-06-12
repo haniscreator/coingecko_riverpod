@@ -39,6 +39,8 @@ class _CoinListPageState extends ConsumerState<CoinListPage> {
     final coinListAsync = ref.watch(coinListProvider);
     final isDarkMode = ref.watch(themeModeProvider) == ThemeMode.dark;
 
+
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
@@ -73,7 +75,7 @@ class _CoinListPageState extends ConsumerState<CoinListPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
-                                'Orypto',
+                                'CryptoX',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 22,
@@ -98,7 +100,7 @@ class _CoinListPageState extends ConsumerState<CoinListPage> {
                           ),
                           const SizedBox(height: 16),
                           const Text(
-                            'Buy & Sell\nCrypto In Minutes',
+                            'Crypto In Minutes',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -119,110 +121,174 @@ class _CoinListPageState extends ConsumerState<CoinListPage> {
                     controller: _scrollController,
                     padding: const EdgeInsets.only(top: 8),
                     itemCount: coins.length,
+
                     itemBuilder: (context, index) {
                       final Coin coin = coins[index];
-                      return AnimatedContainer(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeIn,
-                        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        child: Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // Coin image
-                                Image.network(coin.image, width: 40, height: 40),
-                                const SizedBox(width: 12),
 
-                                // Coin details
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      // Name and current price row
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            coin.name,
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                '\$${coin.currentPrice.toStringAsFixed(2)}',
-                                                style: const TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 4),
-                                              Icon(
-                                                coin.priceChangePercentage24h >= 0
-                                                    ? Icons.arrow_upward
-                                                    : Icons.arrow_downward,
-                                                size: 16,
-                                                color: coin.priceChangePercentage24h >= 0
-                                                    ? Colors.green
-                                                    : Colors.red,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-
-                                      const SizedBox(height: 8),
-
-                                      // 24h High and Low
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'High: \$${coin.high24h.toStringAsFixed(2)}',
-                                            style: const TextStyle(fontSize: 14),
-                                          ),
-                                          Text(
-                                            'Low: \$${coin.low24h.toStringAsFixed(2)}',
-                                            style: const TextStyle(fontSize: 14),
-                                          ),
-                                        ],
-                                      ),
-
-                                      const SizedBox(height: 6),
-
-                                      // ATH with flame if close
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'ATH: \$${coin.ath.toStringAsFixed(2)}',
-                                            style: const TextStyle(fontSize: 14),
-                                          ),
-                                          const SizedBox(width: 6),
-                                          if (coin.athChangePercentage.abs() < 5)
-                                            const Icon(
-                                              Icons.local_fire_department,
-                                              color: Colors.orange,
-                                              size: 16,
-                                            ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-
+                      // 🔹 Add this logic here
+                      final bool isPriceUp = coin.priceChangePercentage24h >= 0;
+                      final double athDifferencePercent =
+                          ((coin.ath - coin.currentPrice).abs() / coin.ath) * 100;
+                      final bool isNearAth = athDifferencePercent <= 5;
                       
+                        
+                      return TweenAnimationBuilder<Offset>(
+                        duration: Duration(milliseconds: 500 + index * 100),
+                        tween: Tween(begin: const Offset(0, 0.2), end: Offset.zero),
+                        curve: Curves.easeOut,
+                        builder: (context, offset, child) {
+                          return Transform.translate(
+                            offset: Offset(0, offset.dy * 50),
+                            child: child,
+                          );
+                        },
+                        child: Stack(
+  alignment: Alignment.topCenter,
+  children: [
+    // Card
+    Container(
+      margin: const EdgeInsets.only(top: 24), // Space for the image
+      child: Card(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 40, 16, 16), // Top padding for spacing below image
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+  // 🔷 Name and Price
+  Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        coin.name,
+        style: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      Text(
+        '\$${coin.currentPrice.toStringAsFixed(2)}',
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ),
+      ),
+    ],
+  ),
+  const SizedBox(height: 8),
+
+  // 🔸 24h High / Low
+  Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        '24h High: \$${coin.high24h.toStringAsFixed(2)}',
+        style: TextStyle(color: Colors.green.shade700),
+      ),
+      Text(
+        '24h Low: \$${coin.low24h.toStringAsFixed(2)}',
+        style: TextStyle(color: Colors.red.shade700),
+      ),
+    ],
+  ),
+  const SizedBox(height: 4),
+
+  // 🔻 ATH
+  Align(
+    alignment: Alignment.centerLeft,
+    child: Text(
+      'ATH: \$${coin.ath.toStringAsFixed(2)}',
+      style: const TextStyle(color: Colors.blueGrey),
+    ),
+  ),
+
+  const SizedBox(height: 6),
+
+  // 🔼 Trend + 🔥 ATH Status
+  Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      
+
+      // 🔥 ATH indicator
+      if (isNearAth)
+        const Row(
+          children: [
+            Icon(Icons.whatshot, color: Colors.orange, size: 18),
+            SizedBox(width: 4),
+            Text(
+              'Near ATH!',
+              style: TextStyle(
+                color: Colors.orange,
+                fontWeight: FontWeight.w600,
+                fontSize: 13,
+              ),
+            ),
+          ],
+        ),
+
+      // Price trend arrow
+      Row(
+        children: [
+          Icon(
+            isPriceUp ? Icons.arrow_upward : Icons.arrow_downward,
+            color: isPriceUp ? Colors.green : Colors.red,
+            size: 18,
+          ),
+          const SizedBox(width: 4),
+          Text(
+            '${coin.priceChangePercentage24h.toStringAsFixed(2)}%',
+            style: TextStyle(
+              color: isPriceUp ? Colors.green : Colors.red,
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+
+    ],
+  ),
+],
+
+          ),
+        ),
+      ),
+    ),
+
+    // Coin Logo (positioned overlapping card)
+    Positioned(
+      top: 0,
+      child: Container(
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 4,
+              offset: const Offset(0, 2),
+            )
+          ],
+        ),
+        child: Image.network(
+          coin.image,
+          width: 48,
+          height: 48,
+        ),
+      ),
+    ),
+  ],
+),
+
+                      );
                     },
+
                   ),
                   loading: () =>
                       const Center(child: CircularProgressIndicator()),
