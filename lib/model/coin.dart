@@ -22,6 +22,8 @@ class Coin {
     required this.athChangePercentage,
   });
 
+  bool get isPriceUp => priceChangePercentage24h >= 0;
+
   factory Coin.fromJson(Map<String, dynamic> json) {
     return Coin(
       id: json['id'],
