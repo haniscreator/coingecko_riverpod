@@ -23,7 +23,7 @@ A beautifully crafted Flutter app to track cryptocurrency prices in real-time us
 
 | Light Mode | Dark Mode |
 |------------|-----------|
-| screens\w1.png | screens\d1.png |
+| assets\screenshots\w1.png | assets\screenshots\d1.png |
 
 ---
 
