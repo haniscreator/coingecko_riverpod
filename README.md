@@ -23,7 +23,7 @@ A beautifully crafted Flutter app to track cryptocurrency prices in real-time us
 
 | Light Mode | Dark Mode |
 |------------|-----------|
-| screens/w1.png | screens/d1.png |
+| screens\w1.png | screens\d1.png |
 
 ---
 
@@ -63,5 +63,55 @@ test/
 git clone https://github.com/yourname/cryptoriverpod.git
 cd cryptoriverpod
 ```
+
+2. Install dependencies
+
+```
+flutter pub get
+```
+
+3. Run the app
+
+```
+flutter run
+```
+
+---
+
+## 🧪 Run Tests
+Widget & Unit Tests
+
+```
+flutter test
+```
+
+You’ll see test output like:
+
+```
++1 ~0 -0: CoinCard renders correctly
++2 ~0 -0: Coin model unit tests
+```
+
+---
+
+## 📃 License
+This project is open-source and available under the MIT License.
+
+---
+
+## 🙌 Acknowledgements
+- [CoinGecko API](https://www.coingecko.com/en/api)
+- [Flutter Community](https://flutter.dev/)
+- [Riverpod](https://riverpod.dev/)
+---
+
+### 💡 Contributing
+Feel free to fork, submit issues, or PRs. All contributions are welcome!
+
+---
+
+### ☕ Buy Me a Coffee
+If you like this project, consider [buying me a coffee!](https://buymeacoffee.com/han.is.creator)
+
 
 
