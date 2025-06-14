@@ -18,9 +18,9 @@ class CoinCard extends StatelessWidget {
       alignment: Alignment.topCenter,
       children: [
         Container(
-          margin: const EdgeInsets.only(top: 24),
+          margin: const EdgeInsets.only(top: 4),
           child: Card(
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
             elevation: 4,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

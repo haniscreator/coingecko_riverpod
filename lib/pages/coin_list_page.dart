@@ -1,5 +1,3 @@
-
-// lib/widgets/coin_image.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -98,11 +96,11 @@ class _CoinListPageState extends ConsumerState<CoinListPage> {
                           ),
                           const SizedBox(height: 16),
                           const Text(
-                            'Crypto In Minutes',
+                            'Trade in Minutes',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
