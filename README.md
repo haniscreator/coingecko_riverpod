@@ -1,16 +1,67 @@
-# crypto_riverpod
+# ₿ CryptoRiverpod
 
-A new Flutter project.
+A beautifully crafted Flutter app to track cryptocurrency prices in real-time using [CoinGecko API](https://www.coingecko.com/en/api). This project is built with clean architecture, robust state management, and a focus on testing and UI excellence.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Features
 
-A few resources to get you started if this is your first Flutter project:
+- ✅ **Live Crypto Prices** via CoinGecko API  
+- 🪴 **Riverpod** for clean, scalable state management  
+- 🎨 **Elegant and Responsive UI**  
+- 🌗 **Light / Dark Mode Toggle**  
+- 🧱 **Well-Structured Folder Architecture**  
+- 🧪 **Widget Tests** for UI validation  
+- 🧾 **Unit Tests** for logic correctness  
+- 📦 **Modular and Reusable Widgets**  
+- 📱 **Optimized for Mobile (iOS & Android)**  
+- 🧼 **Consistent Code Style** and Linting
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📸 Screenshots
+
+| Light Mode | Dark Mode |
+|------------|-----------|
+| screens/w1.png | screens/d1.png |
+
+---
+
+## 🔧 Tech Stack
+
+- **Flutter**
+- **Dart**
+- **Riverpod**
+- **HTTP**
+- **Flutter Test / Mocktail**
+- **CoinGecko REST API**
+
+---
+
+## 🧱 Folder Structure
+
+```bash
+lib/
+├── model/             # Data models (e.g., Coin)
+├── pages/             # App screens (e.g., CoinListPage)
+├── providers/         # Riverpod providers
+├── repository/        # Data Repository
+├── widgets/           # Reusable UI components
+
+test/
+├── widgets/           # Widget tests
+├── models/            # Unit tests
+```
+
+--- 
+
+## 🚀 Getting Started
+
+1. Clone this repo
+
+```
+git clone https://github.com/yourname/cryptoriverpod.git
+cd cryptoriverpod
+```
+
+
